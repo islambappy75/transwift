@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buy USD | Transwift</title>
+  <meta name="description" content="Buy USD with BDT using Transwift's secure exchange." />
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <script defer src="js/main.js"></script>
+  <script defer src="js/rates.js"></script>
+  <script defer src="js/orders.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="logo" href="index.html">Transwift</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="buy.html" class="active">Buy USD</a>
+        <a href="sell.html">Sell USD</a>
+        <a href="transactions.html">Transactions</a>
+        <button class="btn ghost" id="logoutBtn">Logout</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="order-page">
+    <section class="order-summary">
+      <h1>Buy USD</h1>
+      <p>Pay in BDT and receive USD instantly.</p>
+      <div class="card">
+        <p>Current Buy Rate: <strong id="buyRate">119.50</strong> BDT</p>
+        <p>Last updated: <span id="rateUpdated">--</span></p>
+      </div>
+    </section>
+
+    <section class="order-form card">
+      <h2>Place Buy Order</h2>
+      <form id="buyForm" data-type="Buy">
+        <label>USD Amount
+          <input type="number" id="usdAmount" placeholder="100" required />
+        </label>
+        <label>Payment Method
+          <select id="paymentMethod" required>
+            <option value="">Select method</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+            <option value="bKash">bKash</option>
+            <option value="Nagad">Nagad</option>
+          </select>
+        </label>
+        <label>Account Details
+          <input type="text" id="accountDetails" placeholder="Account or wallet number" required />
+        </label>
+        <div class="order-result" id="orderSummary"></div>
+        <button class="btn primary" type="submit">Confirm Buy</button>
+      </form>
+    </section>
+  </main>
+
+  <div class="modal" id="orderModal" aria-hidden="true">
+    <div class="modal-content">
+      <h3>Order Confirmed</h3>
+      <p id="modalMessage"></p>
+      <button class="btn primary" id="closeModal">Done</button>
+    </div>
+  </div>
+</body>
+</html>

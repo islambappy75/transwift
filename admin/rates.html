@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rates | Transwift Admin</title>
+  <meta name="description" content="Manage USD/BDT exchange rates." />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+  <script defer src="../js/main.js"></script>
+  <script defer src="../js/admin.js"></script>
+</head>
+<body>
+  <header class="admin-header">
+    <h1>Transwift Admin</h1>
+    <nav>
+      <a href="dashboard.html">Overview</a>
+      <a href="orders.html">Orders</a>
+      <a href="users.html">Users</a>
+      <a class="active" href="rates.html">Rates</a>
+      <button class="btn ghost" id="adminLogout">Logout</button>
+    </nav>
+  </header>
+
+  <main class="admin-dashboard">
+    <section class="card">
+      <h2>Update Rates</h2>
+      <form id="rateForm" class="rate-form">
+        <label>Buy Rate (BDT/USD)
+          <input type="number" step="0.01" id="adminBuyRate" required />
+        </label>
+        <label>Sell Rate (BDT/USD)
+          <input type="number" step="0.01" id="adminSellRate" required />
+        </label>
+        <button class="btn primary" type="submit">Save Rates</button>
+        <p class="helper" id="rateStatus"></p>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
