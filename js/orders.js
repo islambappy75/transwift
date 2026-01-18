@@ -3,6 +3,21 @@ const orderSummary = document.getElementById('orderSummary');
 const modal = document.getElementById('orderModal');
 const modalMessage = document.getElementById('modalMessage');
 const closeModal = document.getElementById('closeModal');
+const paymentSelect = document.getElementById('paymentMethod');
+const minOrderEl = document.getElementById('minOrder');
+
+const populateGateways = (gateways) => {
+  if (!paymentSelect) return;
+  const options = ['Select method', ...gateways];
+  paymentSelect.innerHTML = options
+    .map((gateway, index) => {
+      if (index === 0) {
+        return `<option value="">${gateway}</option>`;
+      }
+      return `<option value="${gateway}">${gateway}</option>`;
+    })
+    .join('');
+};
 
 const buildSummary = (type, usdAmount, rate) => {
   const feeRate = 0.015;
@@ -35,8 +50,19 @@ const handleFormSubmit = (event) => {
     return;
   }
 
-  const rates = TranswiftStore.get('tw_rates', { buyRate: 119.5, sellRate: 118.0 });
+  const rates = TranswiftStore.get('tw_rates', {
+    buyRate: 119.5,
+    sellRate: 118.0,
+    minOrderUsd: 50,
+    gateways: ['Binance', 'Redotpay', 'Payoneer', 'bKash', 'Nagad'],
+  });
   const rate = type === 'Buy' ? rates.buyRate : rates.sellRate;
+  const minOrder = Number(rates.minOrderUsd || 0);
+
+  if (usdAmount < minOrder) {
+    TranswiftUI.toast(`Minimum order is $${minOrder.toFixed(2)}.`, 'error');
+    return;
+  }
   const summary = buildSummary(type, usdAmount, rate);
   const transactions = TranswiftStore.get('tw_transactions', []);
   const user = TranswiftStore.get('tw_active_user', { email: 'guest@transwift.com' });
@@ -68,8 +94,17 @@ const handleFormSubmit = (event) => {
 
 if (orderForm) {
   const rateKey = orderForm.dataset.type === 'Buy' ? 'buyRate' : 'sellRate';
-  const rates = TranswiftStore.get('tw_rates', { buyRate: 119.5, sellRate: 118.0 });
+  const rates = TranswiftStore.get('tw_rates', {
+    buyRate: 119.5,
+    sellRate: 118.0,
+    minOrderUsd: 50,
+    gateways: ['Binance', 'Redotpay', 'Payoneer', 'bKash', 'Nagad'],
+  });
   const rate = rates[rateKey];
+  populateGateways(rates.gateways || []);
+  if (minOrderEl) {
+    minOrderEl.textContent = Number(rates.minOrderUsd || 0).toFixed(2);
+  }
   const usdInput = document.getElementById('usdAmount');
   usdInput.addEventListener('input', () => {
     const usdAmount = Number(usdInput.value || 0);

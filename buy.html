@@ -34,6 +34,7 @@
       <div class="card">
         <p>Current Buy Rate: <strong id="buyRate">119.50</strong> BDT</p>
         <p>Last updated: <span id="rateUpdated">--</span></p>
+        <p class="muted">Minimum order: $<span id="minOrder">--</span></p>
       </div>
     </section>
 
@@ -44,12 +45,7 @@
           <input type="number" id="usdAmount" placeholder="100" required />
         </label>
         <label>Payment Method
-          <select id="paymentMethod" required>
-            <option value="">Select method</option>
-            <option value="Bank Transfer">Bank Transfer</option>
-            <option value="bKash">bKash</option>
-            <option value="Nagad">Nagad</option>
-          </select>
+          <select id="paymentMethod" required></select>
         </label>
         <label>Account Details
           <input type="text" id="accountDetails" placeholder="Account or wallet number" required />

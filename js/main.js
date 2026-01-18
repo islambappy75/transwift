@@ -46,6 +46,8 @@ const seedDemoData = () => {
     TranswiftStore.set('tw_rates', {
       buyRate: 119.5,
       sellRate: 118.0,
+      minOrderUsd: 50,
+      gateways: ['Binance', 'Redotpay', 'Payoneer', 'bKash', 'Nagad'],
       updatedAt: new Date().toLocaleString(),
       buyTrend: 0.25,
       sellTrend: -0.1,

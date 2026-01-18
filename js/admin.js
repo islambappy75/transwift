@@ -132,21 +132,36 @@ const populateAdminUsers = () => {
 const setupRateForm = () => {
   const form = document.getElementById('rateForm');
   if (!form) return;
-  const rates = TranswiftStore.get('tw_rates', { buyRate: 119.5, sellRate: 118.0 });
+  const rates = TranswiftStore.get('tw_rates', {
+    buyRate: 119.5,
+    sellRate: 118.0,
+    minOrderUsd: 50,
+    gateways: ['Binance', 'Redotpay', 'Payoneer', 'bKash', 'Nagad'],
+  });
   document.getElementById('adminBuyRate').value = rates.buyRate;
   document.getElementById('adminSellRate').value = rates.sellRate;
+  document.getElementById('adminMinOrder').value = rates.minOrderUsd ?? 50;
+  document.getElementById('adminGateways').value = (rates.gateways || []).join(', ');
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const buyRate = Number(document.getElementById('adminBuyRate').value);
     const sellRate = Number(document.getElementById('adminSellRate').value);
-    if (!buyRate || !sellRate) {
+    const minOrderUsd = Number(document.getElementById('adminMinOrder').value);
+    const gatewaysRaw = document.getElementById('adminGateways').value;
+    const gateways = gatewaysRaw
+      .split(',')
+      .map((item) => item.trim())
+      .filter(Boolean);
+    if (!buyRate || !sellRate || !minOrderUsd) {
       TranswiftUI.toast('Please enter valid rates.', 'error');
       return;
     }
     TranswiftStore.set('tw_rates', {
       buyRate,
       sellRate,
+      minOrderUsd,
+      gateways: gateways.length ? gateways : ['Binance', 'Redotpay', 'Payoneer', 'bKash', 'Nagad'],
       updatedAt: new Date().toLocaleString(),
       buyTrend: 0.12,
       sellTrend: -0.05,
