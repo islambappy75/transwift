@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login | Transwift</title>
+  <meta name="description" content="Admin login for Transwift exchange management." />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+  <script defer src="../js/main.js"></script>
+  <script defer src="../js/admin.js"></script>
+</head>
+<body>
+  <main class="admin-login">
+    <section class="auth-card">
+      <h1>Admin Access</h1>
+      <p class="muted">Use admin credentials to manage Transwift.</p>
+      <form id="adminLoginForm">
+        <label>Email
+          <input type="email" id="adminEmail" required placeholder="admin@transwift.com" />
+        </label>
+        <label>Password
+          <input type="password" id="adminPassword" required placeholder="••••••••" />
+        </label>
+        <button class="btn primary" type="submit">Login</button>
+        <p class="helper">Return to <a href="../index.html">homepage</a></p>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

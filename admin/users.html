@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Users | Transwift Admin</title>
+  <meta name="description" content="View registered Transwift users." />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+  <script defer src="../js/main.js"></script>
+  <script defer src="../js/admin.js"></script>
+</head>
+<body>
+  <header class="admin-header">
+    <h1>Transwift Admin</h1>
+    <nav>
+      <a href="dashboard.html">Overview</a>
+      <a href="orders.html">Orders</a>
+      <a class="active" href="users.html">Users</a>
+      <a href="rates.html">Rates</a>
+      <button class="btn ghost" id="adminLogout">Logout</button>
+    </nav>
+  </header>
+
+  <main class="admin-dashboard">
+    <section class="card">
+      <h2>Registered Users</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Registered</th>
+          </tr>
+        </thead>
+        <tbody id="adminUsersTable"></tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

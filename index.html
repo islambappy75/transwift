@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transwift | USD to BDT Exchange</title>
+  <meta name="description" content="Transwift helps you exchange USD to BDT instantly with transparent buy/sell rates, secure orders, and real-time tracking." />
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/main.js"></script>
+  <script defer src="js/rates.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="logo" href="index.html">Transwift</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="buy.html">Buy USD</a>
+        <a href="sell.html">Sell USD</a>
+        <a href="transactions.html">Transactions</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html" class="btn secondary">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="pill">USD ↔ BDT Exchange</p>
+        <h1>Move money fast with transparent USD/BDT rates.</h1>
+        <p class="lead">Transwift gives you real-time rates, instant order placement, and a secure dashboard to manage every exchange.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="register.html">Get Started</a>
+          <a class="btn ghost" href="dashboard.html">View Dashboard</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>Live Rates</h3>
+        <div class="rate-grid">
+          <div>
+            <span>Buy USD</span>
+            <strong id="buyRate">119.50</strong>
+          </div>
+          <div>
+            <span>Sell USD</span>
+            <strong id="sellRate">118.00</strong>
+          </div>
+        </div>
+        <p class="rate-updated">Last updated: <span id="rateUpdated">--</span></p>
+        <div class="trend">
+          <span id="buyTrend" class="trend-indicator up">▲ 0.25%</span>
+          <span id="sellTrend" class="trend-indicator down">▼ 0.10%</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Calculate your exchange</h2>
+        <p>Convert USD to BDT or BDT to USD instantly with live rates.</p>
+      </div>
+      <div class="calculator card">
+        <div>
+          <label for="calcAmount">Amount</label>
+          <input type="number" id="calcAmount" placeholder="Enter amount" />
+        </div>
+        <div>
+          <label for="calcDirection">Direction</label>
+          <select id="calcDirection">
+            <option value="usdToBdt">USD → BDT</option>
+            <option value="bdtToUsd">BDT → USD</option>
+          </select>
+        </div>
+        <div>
+          <label for="calcResult">Result</label>
+          <input type="text" id="calcResult" readonly />
+        </div>
+        <button class="btn primary" id="calcBtn">Calculate</button>
+      </div>
+    </section>
+
+    <section class="section features">
+      <div class="section-header">
+        <h2>Why Transwift?</h2>
+        <p>Modern tools built for fast, transparent currency exchange.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="card">
+          <h3>Instant Orders</h3>
+          <p>Place buy/sell requests with automated summaries and transparent fees.</p>
+        </article>
+        <article class="card">
+          <h3>Secure Dashboard</h3>
+          <p>Track balances, orders, and transaction history from one hub.</p>
+        </article>
+        <article class="card">
+          <h3>Admin Oversight</h3>
+          <p>Admins can manage users, rates, and approvals in real time.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <h4>Transwift</h4>
+      <p>Smart USD/BDT exchange for individuals and businesses.</p>
+    </div>
+    <div>
+      <h5>Quick Links</h5>
+      <a href="buy.html">Buy USD</a>
+      <a href="sell.html">Sell USD</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <h5>Support</h5>
+      <p>Email: support@transwift.com</p>
+      <p>Phone: +880 1234 567 890</p>
+    </div>
+  </footer>
+</body>
+</html>

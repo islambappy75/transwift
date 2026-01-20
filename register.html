@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | Transwift</title>
+  <meta name="description" content="Create a Transwift account to exchange USD and BDT securely." />
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <script defer src="js/main.js"></script>
+  <script defer src="js/auth.js"></script>
+</head>
+<body>
+  <header class="site-header compact">
+    <nav class="navbar">
+      <a class="logo" href="index.html">Transwift</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="login.html" class="btn secondary">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="auth-container">
+    <section class="auth-card">
+      <h1>Create account</h1>
+      <p class="muted">Join Transwift for safe USD/BDT exchanges.</p>
+      <form id="registerForm">
+        <label>Name
+          <input type="text" id="regName" required placeholder="Your name" />
+        </label>
+        <label>Email
+          <input type="email" id="regEmail" required placeholder="you@email.com" />
+        </label>
+        <label>Phone
+          <input type="tel" id="regPhone" required placeholder="+880" />
+        </label>
+        <label>Password
+          <input type="password" id="regPassword" required placeholder="Create password" />
+        </label>
+        <label>Confirm Password
+          <input type="password" id="regConfirm" required placeholder="Confirm password" />
+        </label>
+        <button class="btn primary" type="submit">Register</button>
+        <p class="helper">Already have an account? <a href="login.html">Login</a></p>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Transwift</title>
+  <meta name="description" content="Login to your Transwift account to manage USD/BDT exchanges." />
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <script defer src="js/main.js"></script>
+  <script defer src="js/auth.js"></script>
+</head>
+<body>
+  <header class="site-header compact">
+    <nav class="navbar">
+      <a class="logo" href="index.html">Transwift</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="register.html" class="btn secondary">Create Account</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="auth-container">
+    <section class="auth-card">
+      <h1>Welcome back</h1>
+      <p class="muted">Access your dashboard to manage USD/BDT trades.</p>
+      <form id="loginForm">
+        <label>Email
+          <input type="email" id="loginEmail" required placeholder="you@email.com" />
+        </label>
+        <label>Password
+          <input type="password" id="loginPassword" required placeholder="••••••••" />
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" id="rememberMe" /> Remember me
+        </label>
+        <button class="btn primary" type="submit">Login</button>
+        <p class="helper">Need an account? <a href="register.html">Register</a></p>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

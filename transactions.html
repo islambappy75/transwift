@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transactions | Transwift</title>
+  <meta name="description" content="Review your USD/BDT transaction history and filter by type or status." />
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <script defer src="js/main.js"></script>
+  <script defer src="js/transactions.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="logo" href="index.html">Transwift</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="buy.html">Buy USD</a>
+        <a href="sell.html">Sell USD</a>
+        <a href="transactions.html" class="active">Transactions</a>
+        <button class="btn ghost" id="logoutBtn">Logout</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="transactions-page">
+    <section class="section-header">
+      <div>
+        <h1>Transaction History</h1>
+        <p>Track every order with status updates and search tools.</p>
+      </div>
+      <div class="filters">
+        <select id="filterType">
+          <option value="All">All</option>
+          <option value="Buy">Buy</option>
+          <option value="Sell">Sell</option>
+        </select>
+        <input type="search" id="searchInput" placeholder="Search by status or amount" />
+      </div>
+    </section>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>USD</th>
+            <th>BDT</th>
+            <th>Rate</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="transactionTable"></tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>
