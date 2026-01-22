@@ -1,6 +1,10 @@
 const registerForm = document.getElementById('registerForm');
 const loginForm = document.getElementById('loginForm');
 
+// TODO: Implement password hashing for regular users similar to admin authentication
+// Currently user passwords are stored in plain text for demo purposes only
+// Production deployment should use server-side authentication with proper password hashing
+
 if (registerForm) {
   registerForm.addEventListener('submit', (event) => {
     event.preventDefault();
