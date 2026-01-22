@@ -8,6 +8,20 @@ const TranswiftStore = {
   },
 };
 
+const PasswordUtils = {
+  async hash(password) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  },
+  async verify(password, hash) {
+    const passwordHash = await this.hash(password);
+    return passwordHash === hash;
+  },
+};
+
 const TranswiftUI = {
   toast(message, type = 'info') {
     let toast = document.querySelector('.toast');
@@ -23,7 +37,7 @@ const TranswiftUI = {
   },
 };
 
-const seedDemoData = () => {
+const seedDemoData = async () => {
   const users = TranswiftStore.get('tw_users', []);
   if (!users.find((u) => u.email === 'user@test.com')) {
     users.push({
@@ -38,7 +52,14 @@ const seedDemoData = () => {
 
   const admin = TranswiftStore.get('tw_admin', null);
   if (!admin) {
-    TranswiftStore.set('tw_admin', { email: 'admin@transwift.com', password: 'admin123' });
+    // Default admin password: TranswiftAdmin2026!
+    // IMPORTANT: Change this password after first login via the admin panel
+    const defaultPassword = 'TranswiftAdmin2026!';
+    const hashedPassword = await PasswordUtils.hash(defaultPassword);
+    TranswiftStore.set('tw_admin', { 
+      email: 'admin@transwift.com', 
+      passwordHash: hashedPassword 
+    });
   }
 
   const rates = TranswiftStore.get('tw_rates', null);
@@ -133,10 +154,13 @@ const setupContactForm = () => {
   });
 };
 
-seedDemoData();
-setupNavigation();
-setupLogout();
-setupContactForm();
+(async () => {
+  await seedDemoData();
+  setupNavigation();
+  setupLogout();
+  setupContactForm();
+})();
 
 window.TranswiftStore = TranswiftStore;
 window.TranswiftUI = TranswiftUI;
+window.PasswordUtils = PasswordUtils;

@@ -11,13 +11,18 @@ const ensureAdminAuth = () => {
 
 const adminLogin = () => {
   if (!adminLoginForm) return;
-  adminLoginForm.addEventListener('submit', (event) => {
+  adminLoginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const email = document.getElementById('adminEmail').value.trim();
     const password = document.getElementById('adminPassword').value;
-    const admin = TranswiftStore.get('tw_admin', { email: '', password: '' });
+    const admin = TranswiftStore.get('tw_admin', { email: '', passwordHash: '' });
 
-    if (email === admin.email && password === admin.password) {
+    // Support both legacy plain text passwords and new hashed passwords for migration
+    const isValidPassword = admin.passwordHash 
+      ? await PasswordUtils.verify(password, admin.passwordHash)
+      : password === admin.password; // Backward compatibility
+
+    if (email === admin.email && isValidPassword) {
       localStorage.setItem('tw_admin_auth', 'true');
       TranswiftUI.toast('Welcome, Admin!');
       window.location.href = 'dashboard.html';
