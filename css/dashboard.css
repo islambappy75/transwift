@@ -1,0 +1,74 @@
+.dashboard,
+.order-page,
+.transactions-page,
+.contact-page {
+  padding: 40px 8% 60px;
+  display: grid;
+  gap: 32px;
+}
+
+.dashboard-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.dashboard-card {
+  background: var(--white);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  min-width: 240px;
+}
+
+.stats-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.recent-orders table,
+.transactions-page table,
+.admin-dashboard table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+tr:nth-child(even) {
+  background: #f1f5f9;
+}
+
+.order-page {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.order-form form {
+  display: grid;
+  gap: 14px;
+}
+
+.order-result {
+  background: rgba(37, 99, 235, 0.08);
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.contact-card form {
+  display: grid;
+  gap: 14px;
+}

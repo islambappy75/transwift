@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Transwift</title>
+  <meta name="description" content="Contact Transwift support for USD/BDT exchange help." />
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="logo" href="index.html">Transwift</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="buy.html">Buy USD</a>
+        <a href="sell.html">Sell USD</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="login.html" class="btn secondary">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="contact-page">
+    <section class="section-header">
+      <div>
+        <h1>Contact Transwift</h1>
+        <p>We respond within 24 hours to all inquiries.</p>
+      </div>
+    </section>
+
+    <section class="card contact-card">
+      <form id="contactForm">
+        <label>Name
+          <input type="text" id="contactName" required placeholder="Your name" />
+        </label>
+        <label>Email
+          <input type="email" id="contactEmail" required placeholder="you@email.com" />
+        </label>
+        <label>Subject
+          <input type="text" id="contactSubject" required placeholder="How can we help?" />
+        </label>
+        <label>Message
+          <textarea id="contactMessage" rows="5" required placeholder="Write your message"></textarea>
+        </label>
+        <button class="btn primary" type="submit">Send Message</button>
+        <p class="helper" id="contactSuccess"></p>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
