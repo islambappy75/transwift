@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Dashboard | Transwift</title>
+  <meta name="description" content="Transwift dashboard to manage USD/BDT exchanges, orders, and insights." />
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <script defer src="js/main.js"></script>
+  <script defer src="js/rates.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="logo" href="index.html">Transwift</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <div class="nav-links">
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="buy.html">Buy USD</a>
+        <a href="sell.html">Sell USD</a>
+        <a href="transactions.html">Transactions</a>
+        <button class="btn ghost" id="logoutBtn">Logout</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="dashboard">
+    <section class="dashboard-hero">
+      <div>
+        <h1>Hello, <span id="userName">Trader</span> 👋</h1>
+        <p>Keep track of your USD/BDT exchange activity and manage new orders.</p>
+      </div>
+      <div class="dashboard-card">
+        <h3>Live Rates</h3>
+        <p>Buy: <strong id="buyRate">119.50</strong> BDT</p>
+        <p>Sell: <strong id="sellRate">118.00</strong> BDT</p>
+        <p class="muted">Updated <span id="rateUpdated">--</span></p>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="card">
+        <h3>Total Orders</h3>
+        <p id="statOrders">0</p>
+      </article>
+      <article class="card">
+        <h3>Pending Orders</h3>
+        <p id="statPending">0</p>
+      </article>
+      <article class="card">
+        <h3>Total USD Volume</h3>
+        <p id="statUsd">$0.00</p>
+      </article>
+      <article class="card">
+        <h3>Total BDT Volume</h3>
+        <p id="statBdt">৳0.00</p>
+      </article>
+    </section>
+
+    <section class="recent-orders">
+      <div class="section-header">
+        <h2>Recent Orders</h2>
+        <a class="btn secondary" href="transactions.html">View all</a>
+      </div>
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Type</th>
+              <th>USD</th>
+              <th>BDT</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="recentOrders"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = JSON.parse(localStorage.getItem('tw_active_user') || '{}');
+      if (user.name) {
+        document.getElementById('userName').textContent = user.name;
+      }
+      const orders = JSON.parse(localStorage.getItem('tw_transactions') || '[]');
+      const stats = {
+        total: orders.length,
+        pending: orders.filter((o) => o.status === 'Pending').length,
+        usd: orders.reduce((sum, o) => sum + Number(o.usdAmount || 0), 0),
+        bdt: orders.reduce((sum, o) => sum + Number(o.bdtAmount || 0), 0),
+      };
+      document.getElementById('statOrders').textContent = stats.total;
+      document.getElementById('statPending').textContent = stats.pending;
+      document.getElementById('statUsd').textContent = `$${stats.usd.toFixed(2)}`;
+      document.getElementById('statBdt').textContent = `৳${stats.bdt.toFixed(2)}`;
+
+      const recent = orders.slice(-4).reverse();
+      const tbody = document.getElementById('recentOrders');
+      tbody.innerHTML = recent
+        .map(
+          (o) => `
+            <tr>
+              <td>${o.date}</td>
+              <td>${o.type}</td>
+              <td>${Number(o.usdAmount).toFixed(2)}</td>
+              <td>${Number(o.bdtAmount).toFixed(2)}</td>
+              <td><span class="badge ${o.status.toLowerCase()}">${o.status}</span></td>
+            </tr>
+          `
+        )
+        .join('');
+    });
+  </script>
+</body>
+</html>

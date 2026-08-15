@@ -1,0 +1,33 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 16px;
+}
+
+.auth-card {
+  background: var(--white);
+  padding: 32px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: min(420px, 100%);
+  display: grid;
+  gap: 16px;
+}
+
+.auth-card form {
+  display: grid;
+  gap: 14px;
+}
+
+.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.checkbox input {
+  width: 18px;
+  height: 18px;
+}

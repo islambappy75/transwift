@@ -1,0 +1,63 @@
+.admin-header {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 24px 8%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.admin-header nav {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.admin-header a {
+  color: #cbd5f5;
+  font-weight: 500;
+}
+
+.admin-header a.active {
+  color: #fff;
+}
+
+.admin-dashboard {
+  padding: 40px 8% 60px;
+  display: grid;
+  gap: 24px;
+}
+
+.admin-login {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.rate-form {
+  display: grid;
+  gap: 16px;
+  max-width: 420px;
+}
+
+.action-btn {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.action-btn.approve {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent);
+}
+
+.action-btn.reject {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--error);
+}
